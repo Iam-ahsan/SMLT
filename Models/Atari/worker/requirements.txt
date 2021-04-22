@@ -1,0 +1,5 @@
+gym[atari]
+redis
+tensorflow
+gym
+opencv-python
