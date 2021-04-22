@@ -1,0 +1,5 @@
+workers EC2	    Local       Step-function	
+10  10	10	10
+25  25	25	25
+40  40	40	40
+100 100	100	45
