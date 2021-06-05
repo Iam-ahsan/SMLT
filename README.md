@@ -19,12 +19,12 @@ The sharded gradients are further downloaded by the **shard aggregator** module 
 - [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
 
 ## Evaluation Platform
- We performed the verification and validation studies on AWS lambda using Tensorflow, Pytorch and MxNet. We use the following ML models for our evaluation studies. 
+ We prototype SMLT atop AWS lambda and performed the verification and validation studies using Tensorflow, Pytorch and MxNet. We use the following ML models for our evaluation studies. 
   1. ResNet-18 (with 18 layers, 11 million parameters) and ResNet-50 (with 50 layers, 23 million parameters) ~\cite{he2016deep} are medium size image classification models with residual functions.
   2. Bert-Small (with 66 million parameters), Bert-Medium (with 110 milion parameters) and Bert-Medium (with 340 milion parameters) are state-of-the-art NLP models.
   3. We use Reinforcement learning to train Atari break out game with a total of 50 million frames.
 ### Object Store
  We use S3 as our object store. To upload the training code and the training data the artifact manager takes the function name, artifact name and the bucket name as an input. 
  ### Parameter Store
- We use Redis as out parameter store. Users can either host the parameter store on an EC2 instaces or AWS fargate for hosting the paramter store. In our evaluation setup we hosted our parameter store on AWS fargate with instance type C5.4xlare. Once the parameter store is setup the ip address of the parameter store is updated in the respective modules (Shard generator, shard aggregator and global aggregator)
+ We use Redis version 6.2.1 as our parameter store. Users can either host the parameter store on an EC2 instaces or AWS fargate for hosting the paramter store. In our evaluation setup we hosted our parameter store on AWS fargate with instance type C5.4xlare. Once the parameter store is setup the ip address of the parameter store is updated in the respective modules (Shard generator, shard aggregator and global aggregator)
  
