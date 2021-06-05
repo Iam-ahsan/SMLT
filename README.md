@@ -17,6 +17,7 @@ The sharded gradients are further downloaded by the **shard aggregator** module 
 ## Prerequisite
 - [AWS  Cli](https://aws.amazon.com/cli/)
 - [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+- [Redis](https://pypi.org/project/redis-server/)
 
 ## Evaluation Platform
  We prototype SMLT atop AWS lambda and performed the verification and validation studies using Tensorflow, Pytorch and MxNet. We use the following ML models for our evaluation studies. 
@@ -27,4 +28,11 @@ The sharded gradients are further downloaded by the **shard aggregator** module 
  We use S3 as our object store. To upload the training code and the training data the artifact manager takes the function name, artifact name and the bucket name as an input. 
  ### Parameter Store
  We use Redis version 6.2.1 as our parameter store. Users can either host the parameter store on an EC2 instaces or AWS fargate for hosting the paramter store. In our evaluation setup we hosted our parameter store on AWS fargate with instance type C5.4xlare. Once the parameter store is setup the ip address of the parameter store is updated in the respective modules (Shard generator, shard aggregator and global aggregator)
+ ## Deployment
  
+ ## Run Experiments
+ ### Artifact Manager
+ 
+ ### Training Schaduler
+ 
+ ### Performance Optimizer
