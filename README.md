@@ -30,6 +30,7 @@ The sharded gradients are further downloaded by the **shard aggregator** module 
  ### Parameter Store
  We use Redis version 6.2.1 as our parameter store. Users can either host the parameter store on an EC2 instaces or AWS fargate for hosting the paramter store. In our evaluation setup we hosted our parameter store on AWS fargate with instance type C5.4xlare. Once the parameter store is setup the ip address of the parameter store is updated in the respective modules (Shard generator, shard aggregator and global aggregator)
  ## Deployment
+ To deploy the Lambda serverless function follow the instruction in the this [tutorial](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-awsother)
  
  ## Run Experiments
  ### Artifact Manager
