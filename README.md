@@ -17,6 +17,7 @@ The sharded gradients are further downloaded by the **shard aggregator** module 
 ## Prerequisite
 - [AWS  Cli](https://aws.amazon.com/cli/)
 - [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+- [Bayesian Optimization](https://github.com/fmfn/BayesianOptimization)
 - [Redis](https://pypi.org/project/redis-server/)
 
 ## Evaluation Platform
@@ -32,7 +33,22 @@ The sharded gradients are further downloaded by the **shard aggregator** module 
  
  ## Run Experiments
  ### Artifact Manager
+ Must be run with bash. Pleace the "Artifact Manager.sh" in the folder containing the training code and the respective dependencies. Artifact manager takes the following parameter as input.
+   1. Function Name (https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)
+   2. Bucket Name (https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+   3. Package Name (https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-awsother)
+   4. AWS Role (https://aws.amazon.com/premiumsupport/knowledge-center/lambda-execution-role-s3-bucket/)
  
- ### Training Schaduler
- 
+ To run the Artifact Manager, try: ./Artifact-Manager.sh $Function-Name $Bucket Name $Package Name $AWS Role. Sample code for various models are available in the Model directory. Due to space limitation of githun we were unbale to add all the dependencies for the examples.
+ ### Training Scheduler
+ Must be run with python3 and requires the following modules:
+  1. Boto3 (https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+ Training Manager takes the following parameter as input.
+  1. Global batch size
+  2. Number of training workers
+  3. Number of training epochs
+  Once the model artifact is deployed and the function are created training scheduler is used for initiating the training process. 
+  To run the training scheduler, try: python training-schaduler.py global-batch-size number-of-worker number-of-epochs
+  
  ### Performance Optimizer
+After every epcoh the training scheduler collectes the performacne metrics from the training workers such as training time and communication time. this information is furhter utilized by the performance optimizer to improve the training speed or user specified threadhold (cost of training time). The performacne optimizer is based on Bayesian Optimization.
