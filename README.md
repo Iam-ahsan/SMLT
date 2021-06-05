@@ -71,7 +71,9 @@ We prototype SMLT atop AWS lambda and performed the verification and validation 
   2. Number of training workers
   3. Number of training epochs
   Once the model artifact is deployed and the function are created training scheduler is used for initiating the training process. 
-  To run the training scheduler, try: python training-schaduler.py global-batch-size number-of-worker number-of-epochs
+  To run the training scheduler, try: 
+  
+  python training-schaduler.py global-batch-size number-of-worker number-of-epochs
   
  ### Performance Optimizer
 
