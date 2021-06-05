@@ -35,15 +35,15 @@ The sharded gradients are further downloaded by the **shard aggregator** module 
  ## Run Experiments
  ### Artifact Manager
  Must be run with bash. Pleace the "Artifact Manager.sh" in the folder containing the training code and the respective dependencies. Artifact manager takes the following parameter as input.
-   1. Function Name (https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)
-   2. Bucket Name (https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
-   3. Package Name (https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-awsother)
-   4. AWS Role (https://aws.amazon.com/premiumsupport/knowledge-center/lambda-execution-role-s3-bucket/)
+   1. [Function Name](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)
+   2. [Bucket Name](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
+   3. [Package Name](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-awsother)
+   4. [AWS Role](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-execution-role-s3-bucket/)
  
  To run the Artifact Manager, try: ./Artifact-Manager.sh $Function-Name $Bucket Name $Package Name $AWS Role. Sample code for various models are available in the Model directory. Due to space limitation of githun we were unbale to add all the dependencies for the examples.
  ### Training Scheduler
  Must be run with python3 and requires the following modules:
-  1. Boto3 (https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+  1. [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
  Training Manager takes the following parameter as input.
   1. Global batch size
   2. Number of training workers
