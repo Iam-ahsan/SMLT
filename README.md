@@ -17,3 +17,9 @@ The sharded gradients are further downloaded by the \textit{shard aggregator} mo
 **prerequisite**
 - [AWS  Cli](https://aws.amazon.com/cli/)
 - [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+
+**Evaluation Platform** 
+ We performed the verification and validation studies on AWS lambda using Tensorflow, Pytorch and MxNe. We use the following ML models for our evaluation studies. 
+  1. ResNet-18 (with 18 layers, 11 million parameters) and ResNet-50 (with 50 layers, 23 million parameters) ~\cite{he2016deep} are medium size image classification models with residual functions.
+  2. Bert-Small (with 66 million parameters), Bert-Medium (with 110 milion parameters) and Bert-Medium (with 340 milion parameters) are state-of-the-art NLP models.
+  3. We use Reinforcement learning to train Atari break out game with a total of 50 million frames.
