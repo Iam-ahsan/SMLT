@@ -26,5 +26,5 @@ The sharded gradients are further downloaded by the **shard aggregator** module 
 ### Object Store
  We use S3 as our object store. To upload the training code and the training data the artifact manager takes the function name, artifact name and the bucket name as an input. 
  ### Parameter Store
- We use Redis as out parameter store. Users can either host the parameter store ont EC2 instaces or AWS fargate for hosting the paramter store. Once the parameter store is setup the ip address of the parameter store is updated in the respective modules (Shard generator, shard aggregator and global aggregator)
+ We use Redis as out parameter store. Users can either host the parameter store on an EC2 instaces or AWS fargate for hosting the paramter store. In our evaluation setup we hosted our parameter store on AWS fargate with instance type C5.4xlare. Once the parameter store is setup the ip address of the parameter store is updated in the respective modules (Shard generator, shard aggregator and global aggregator)
  
