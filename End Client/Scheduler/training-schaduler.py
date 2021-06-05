@@ -5,6 +5,8 @@ import threading
 import time
 import math
 import getlog
+import sys
+
 mylambda =  boto3.client('lambda')
 
 def call_parallel_function(data, function_name, responses):
@@ -37,11 +39,11 @@ def setup_function(input_data, function_name):
     return output_data
 
 
-def run_training(num_workers,mini_batch_size):
+def run_training(num_workers,mini_batch_size , my_epochs):
     batch_size = mini_batch_size
     total_workers = num_workers
     toal_shards = num_workers
-    total_epochs = 10
+    total_epochs = my_epochs
     total_mini_batches = int(math.ceil(50000/float(total_workers*batch_size)))
   
     
@@ -70,7 +72,16 @@ def run_training(num_workers,mini_batch_size):
 
 if __name__ == '__main__':
 
-    global_batch_sizes = [3200]#5000, 2000, 10000]
+    global_batch_size = int(sys.argv[1])
+    user = int(sys.argv[2])
+    my_epochs = int(sys.argv[3])
+    mini_batch_size = global_batch_size//user
+  
+    print(mini_batch_size)
+    run_training(user, mini_batch_size, my_epochs)
+    getlog.collect_logs(user, global_batch_size)
+    
+    '''global_batch_sizes = [3200]#5000, 2000, 10000]
     users = [320]#, 25, 40, 100]#  
     for global_batch_size in global_batch_sizes:
         for user in users:
@@ -79,9 +90,9 @@ if __name__ == '__main__':
                 "batch_Size {} and users {}"
                 .format(global_batch_size, user))
 
-            mini_batch_size = 10
+            mini_batch_size = global_batch_size//user
             if mini_batch_size > 32:
                 mini_batch_size = 32
-            run_training(user, mini_batch_size)
-            getlog.collect_logs(user, global_batch_size)
-    print("Done!!")
+            #run_training(user, mini_batch_size)
+            #getlog.collect_logs(user, global_batch_size)
+    print("Done!!")'''

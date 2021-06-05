@@ -18,10 +18,10 @@ aws lambda update-function-code --function-name $function_name --s3-bucket $buck
 
 }
 
-function_name='simulation_global-aggregator'
-bucket_name='my-s3-bucket'
-packge_name='simulation_global-aggregator.zip'
-aws_role='my_aws_role'
-
+function_name=$1 #'simulation_global-aggregator'
+bucket_name=$2 #'my-s3-bucket'
+packge_name=$3 #'simulation_global-aggregator.zip'
+aws_role=$4 #'my_aws_role'
+#echo $function_name
 creat_function()
 update_code()
